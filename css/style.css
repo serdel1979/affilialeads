@@ -357,7 +357,7 @@ a:focus {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   background-size: cover;
-  background-image: url(../images/worker.png);
+ # background-image: url(../images/worker.png);
 }
 
 .work_section {
