@@ -548,6 +548,18 @@
     </section>
     <!-- footer section -->
 
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+
+        if (status === 'ok') {
+            alert("✅ Mensaje enviado correctamente.");
+        } else if (status === 'error') {
+            alert("❌ Error en el envío del mensaje.");
+        }
+    </script>
+
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
 </body>
