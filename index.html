@@ -31,13 +31,7 @@
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
 <script src="https://www.google.com/recaptcha/api.js?render=6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ"></script>
-<script>
-  grecaptcha.ready(function() {
-      grecaptcha.execute('6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ', {action: 'formulario'}).then(function(token) {
-          document.getElementById('g-recaptcha-response').value = token;
-      });
-  });
-</script>
+
 
 <body>
   <div class="hero_area">
@@ -572,6 +566,14 @@
 
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
+
+    <script>
+      grecaptcha.ready(function() {
+          grecaptcha.execute('6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ', {action: 'formulario'}).then(function(token) {
+              document.getElementById('g-recaptcha-response').value = token;
+          });
+      });
+    </script>
 </body>
 
 </html>

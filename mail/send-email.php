@@ -30,8 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $response = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_token);
     $responseKeys = json_decode($response, true);
 
-    var_dump($responseKeys);
-    exit;
+    
 
 
     if (!$responseKeys["success"] || $responseKeys["score"] < 0.5) {
