@@ -28,7 +28,7 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
-  <script src="https://www.google.com/recaptcha/api.js?render=6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ"></script>
+  
 </head>
 
 
@@ -88,7 +88,7 @@
     <div class="container layout_padding2-top">
       <div class="row">
         <div class="col-md-6 mx-auto">
-          <form action="/mail/send-email.php" method="POST">
+          <form  id="contactForm" action="/mail/send-email.php" method="POST">
             <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
 
             <div>
@@ -209,7 +209,7 @@
           alert("✅ Mensaje enviado correctamente.");
       } else if (status === 'error') {
           alert("❌ Error en el envío del mensaje.");
-          reload();
+
       }
   </script>
 
@@ -217,22 +217,33 @@
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
 
-
+  <script src="https://www.google.com/recaptcha/api.js?render=6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ"></script>
   <script>
-    document.querySelector('form').addEventListener('submit', function(e) {
-      e.preventDefault();
-  
-      if (typeof grecaptcha === 'undefined') {
-        alert('reCAPTCHA no está cargado. Intenta recargar la página.');
-        return;
-      }
-  
-      grecaptcha.execute('6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ', {action: 'formulario'}).then(function(token) {
-        document.getElementById('g-recaptcha-response').value = token;
-        e.target.submit();
+    console.log('Script cargado');
+    
+    const form = document.getElementById('contactForm');
+    if (!form) {
+      console.log('No se encontró el formulario con id contactForm');
+    } else {
+      console.log('Formulario encontrado, asignando listener...');
+      form.addEventListener('submit', function(e) {
+        console.log('Submit interceptado');
+        e.preventDefault();
+    
+        if (typeof grecaptcha === 'undefined') {
+          alert('reCAPTCHA no está cargado.');
+          return;
+        }
+    
+        grecaptcha.execute('6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ', {action: 'formulario'}).then(function(token) {
+          console.log('Token reCAPTCHA:', token);
+          document.getElementById('g-recaptcha-response').value = token;
+          form.submit();
+        });
       });
-    });
+    }
   </script>
+  
   
   
 </body>
