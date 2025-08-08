@@ -21,6 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Ahora sí obtenemos la variable
     $recaptcha_secret = getenv('RECAPTCHA_SECRET') ?: '';
 
+    var_dump($recaptcha_secret);
+    exit;
+
 
     $recaptcha_token = $_POST['g-recaptcha-response'] ?? '';
 
