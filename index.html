@@ -565,17 +565,20 @@
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
 
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ"></script>
     <script>
-
-      document.querySelector('form').addEventListener('submit', function(e) {
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', function(e) {
         e.preventDefault();
-    
-        grecaptcha.execute('6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ', {action: 'formulario'}).then(function(token) {
+        grecaptcha.execute('6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ', {action: 'formulario'})
+        .then(function(token) {
+          console.log("Token recibido:", token);
           document.getElementById('g-recaptcha-response').value = token;
-          e.target.submit(); 
+          form.submit();
         });
       });
     </script>
+    
     
 </body>
 
