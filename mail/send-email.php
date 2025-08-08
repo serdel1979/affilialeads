@@ -2,7 +2,8 @@
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
-    $recaptcha_secret = "6LeH0J4rAAAAAG7POiG6vn_FbXhaLnDJlYevFRLp";
+    $recaptcha_secret = getenv('RECAPTCHA_SECRET');
+
 
 
     $recaptcha_token = $_POST['g-recaptcha-response'] ?? '';
