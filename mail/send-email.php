@@ -21,8 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Ahora sí obtenemos la variable
     $recaptcha_secret = getenv('RECAPTCHA_SECRET') ?: '';
 
-    var_dump($recaptcha_secret);
-    exit;
+    
 
 
     $recaptcha_token = $_POST['g-recaptcha-response'] ?? '';
@@ -30,6 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
     $response = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_token);
     $responseKeys = json_decode($response, true);
+
+    var_dump($responseKeys);
+    exit;
+
 
     if (!$responseKeys["success"] || $responseKeys["score"] < 0.5) {
         header("Location: /?status=error&reason=robot");
