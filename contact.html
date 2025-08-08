@@ -218,12 +218,17 @@
 
 
   <script>
-    grecaptcha.ready(function() {
-        grecaptcha.execute('6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ', {action: 'formulario'}).then(function(token) {
-            document.getElementById('g-recaptcha-response').value = token;
-        });
+
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault(); 
+  
+      grecaptcha.execute('6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ', {action: 'formulario'}).then(function(token) {
+        document.getElementById('g-recaptcha-response').value = token;
+        e.target.submit(); 
+      });
     });
   </script>
+  
 </body>
 
 </html>
