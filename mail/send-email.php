@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
-    // Ahora sí obtenemos la variable
     $recaptcha_secret = getenv('RECAPTCHA_SECRET') ?: '';
 
     
