@@ -29,6 +29,14 @@
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
+<script src="https://www.google.com/recaptcha/api.js?render=TU_SITE_KEY"></script>
+<script>
+grecaptcha.ready(function() {
+    grecaptcha.execute('6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ', {action: 'formulario'}).then(function(token) {
+        document.getElementById('g-recaptcha-response').value = token;
+    });
+});
+</script>
 
 <body>
   <div class="hero_area">
@@ -85,6 +93,8 @@
       <div class="row">
         <div class="col-md-6 mx-auto">
           <form action="/mail/send-email.php" method="POST">
+            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+
             <div>
               <input type="text" name="name" placeholder="NAME" required>
             </div>
