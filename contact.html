@@ -218,31 +218,18 @@
   <script type="text/javascript" src="js/bootstrap.js"></script>
 
   <script src="https://www.google.com/recaptcha/api.js?render=6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ"></script>
-  <script>
-    console.log('Script cargado');
-    
-    const form = document.getElementById('contactForm');
-    if (!form) {
-      console.log('No se encontró el formulario con id contactForm');
-    } else {
-      console.log('Formulario encontrado, asignando listener...');
+    <script>
+      const form = document.getElementById('contactForm');
       form.addEventListener('submit', function(e) {
-        console.log('Submit interceptado');
         e.preventDefault();
-    
-        if (typeof grecaptcha === 'undefined') {
-          alert('reCAPTCHA no está cargado.');
-          return;
-        }
-    
-        grecaptcha.execute('6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ', {action: 'formulario'}).then(function(token) {
-          console.log('Token reCAPTCHA:', token);
+        grecaptcha.execute('6LeH0J4rAAAAAJdbpBDSAjp5dbZyFouHU7EiKQdZ', {action: 'formulario'})
+        .then(function(token) {
+          
           document.getElementById('g-recaptcha-response').value = token;
           form.submit();
         });
       });
-    }
-  </script>
+    </script>
   
   
   
